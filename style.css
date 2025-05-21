@@ -1,4 +1,3 @@
-/* Reset & base */
 * {
     margin: 0;
     padding: 0;
@@ -6,124 +5,193 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    color: #1c1c1e;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
     padding: 20px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px 0;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #000;
+}
+
+figure {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* Header */
-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-}
-
-/* Navigation (figcaption) */
 figcaption ul {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     list-style: none;
-    margin-top: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 figcaption a {
     text-decoration: none;
-    color: #3498db;
-    font-weight: bold;
+    color: #007aff;
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
     transition: color 0.3s ease;
 }
 
-figcaption a:hover {
-    color: #1abc9c;
+figcaption a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #007aff;
+    bottom: -4px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
 }
 
-/* Main section */
+figcaption a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
 main {
-    max-width: 1000px;
+    max-width: 960px;
     margin: 0 auto;
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-main section h2 {
-    font-size: 1.8rem;
+section, div {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 2rem;
     margin-bottom: 10px;
-    color: #2c3e50;
+    color: #111;
 }
 
-main p {
-    margin-bottom: 20px;
+p {
+    font-size: 1.1rem;
+    color: #333;
 }
 
-/* Lists */
 ul {
-    margin: 20px 0;
-    padding-left: 20px;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
 }
 
 ul li {
-    margin-bottom: 10px;
-    list-style-type: disc;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 15px;
+    font-size: 1rem;
 }
 
-/* Tools & Skills */
 ul li img {
-    vertical-align: middle;
-    margin-right: 10px;
+    width: 40px;
+    height: 40px;
 }
 
-/* Projects & Experiences */
-div {
-    margin-bottom: 30px;
+div img {
+    border-radius: 12px;
+    margin: 10px 0;
 }
 
-div h2 {
-    font-size: 1.5rem;
-    color: #2980b9;
-    margin-bottom: 10px;
-}
-
-div p {
-    margin-top: 10px;
-}
-
-/* Footer */
 footer {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 60px;
+    padding: 30px 20px;
     font-size: 0.9rem;
-    color: #777;
-    padding: 20px;
+    color: #6e6e73;
+    border-top: 1px solid #e5e5ea;
 }
 
 footer a {
-    color: #3498db;
+    color: #007aff;
     text-decoration: none;
+    margin-left: 10px;
 }
 
-/* Responsive */
+footer a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media (max-width: 768px) {
-    figcaption ul {
-        flex-direction: column;
-        align-items: center;
+    header h1 {
+        font-size: 2rem;
     }
 
-    main {
-        padding: 15px;
+    h2 {
+        font-size: 1.5rem;
     }
+
+    ul li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    figcaption ul {
+        gap: 15px;
+    }
+    .outils-list {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.outils-list li {
+    text-align: center;
+    width: 180px;
+}
+.outils-list img {
+    transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.4s;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 8px;
+}
+.outils-list img:hover {
+    transform: scale(1.12) rotate(-2deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+}
+.autres-competences img {
+    vertical-align: middle;
+    margin-right: 6px;
+}
+.autres-competences li {
+    margin-bottom: 10px;
 }
